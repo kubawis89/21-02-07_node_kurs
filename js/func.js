@@ -1,3 +1,6 @@
-const { helloWorld } = require("../functions");
+const example = () => {
+    const fromInput = document.getElementById("example").value;
+    document.getElementById("text").innerText = fromInput;
+}
 
-alert("Hello World");
+document.getElementById("action").addEventListener("click",example)
