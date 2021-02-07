@@ -1,7 +1,6 @@
-console.log("Hello Worls");
+const functions = require("./functions")
 
-const helloWorld = () => {
-    console.log("Hello World")
-}
+console.log("Hello");
 
-helloWorld();
+functions.helloWorld();
+functions.add(4,5);
