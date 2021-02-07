@@ -1,33 +1,22 @@
-/*const http = require('http');
-const handler = (request, response) => {  //request i response to nazwy umowne mogą być inne np bla1 i bla 2
-    response.end("<h1> Hello World </h1>");
-    console.log("sample message");
-}
-const server = http.createServer(handler);
+const express = require("express");
+const path = require("path");
+
 const port = 3000;
-
-//server.listen(port, () => {
-//  console.log(`Serwer działa na porcie ${port}`);
-//})
-
-server.listen(port, (err) => {
-    if (err) {
-        return console.log("Coś poszło nie tak...:", err)
-    }
-    console.log(`Serwer działa na porcie ${port}`);
-})
-*/
-    //   --------------  EXPRESS --------------------------
-const express = require("express"); //express zamiast http
-const port = 3000; //port i app dobrowolne nazwy
 const app = express();
-        //gdy uzytkownik wchodzi na stronę główną
-app.get('/', function (req, res) { //'/' -> adres strony głównej
-    res.send("<h2> Hello World </h2>");
+
+app.set("view engine","hbs");
+
+app.use("/assets",express.static(path.join(__dirname,"./assets")))
+app.use("/js",express.static(path.join(__dirname,"./js")))
+
+app.get("/", function (req,res) {
+    res.render('index')
 })
+app.get("/about", function (req,res) {
+    res.send("<h2>Strona o nas</h2>")
+})
+
 app.listen(port, (err) => {
-    if (err) {
-        return console.log("Coś poszło nie tak...:", err)
-    }
-    console.log(`Serwer działa na porcie ${port}`);
+    if (err) { return console.log(err)}
+    console.log("Działa na porice",port)
 })
