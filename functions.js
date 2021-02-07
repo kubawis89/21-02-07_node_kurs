@@ -9,4 +9,4 @@ module.exports = {
     add
 }
 
-console.log("Plik załadowano pomyślnie")
+console.log("Plik załadowano pomyślnie") //sprawdzenie czy plik functions się zaimportował do app.js
